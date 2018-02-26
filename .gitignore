@@ -1,4 +1,6 @@
+/logs
 /logs/*
+/storage
 /storage/*
 /config/*
 !/config/nginx/
