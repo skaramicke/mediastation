@@ -1,0 +1,72 @@
+version: '2'
+
+services:
+
+  nginx:
+    image: linuxserver/nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/nginx/:/config
+    environment:
+      - TZ:Europe/Stockholm
+
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    volumes:
+      - ./config/sabnzbd:/config
+      - ./storage/downloads:/downloads
+      - ./storage/incomplete-downloads:/incomplete-downloads
+    ports:
+      - 8080:8080
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ:Europe/Stockholm
+
+  couchpotato:
+    image: linuxserver/couchpotato
+    volumes:
+      - ./config/couchpotato:/config
+      - ./storage/downloads:/downloads
+      - ./storage/movies:/movies
+    ports:
+      - 5050:5050
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ:Europe/Stockholm
+      
+  sonarr:
+    image: linuxserver/sonarr
+    volumes:
+      - ./config/sonarr:/config
+      - ./storage/tv:/tv
+      - ./storage/downloads/:/downloads
+    ports:
+      - 8989:8989
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ:Europe/Stockholm
+      
+  plex:
+    image: linuxserver/plex
+    volumes:
+      - ./config/plex:/config
+      - ./storage/tv:/data/tvshows
+      - ./storage/movies:/data/tvshows
+      - ./storage/plex_transcode:/transcode
+    ports:
+      - 32400:32400
+      - 32400:32400/udp
+      - 32469:32469
+      - 32469:32469/udp
+      - 5353:5353/udp
+      - 1900:1900/udp
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ:Europe/Stockholm
+      
