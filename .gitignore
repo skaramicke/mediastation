@@ -1,0 +1,7 @@
+/logs/*
+/storage/*
+/config/*
+!/config/nginx/
+/config/nginx/*
+!/config/nginx/nginx/
+
