@@ -17,7 +17,7 @@ Find the IP number of the machine running the services.
 ## 4. DNS or hosts file configuration.
 For noobs, add this to your /etc/hosts file (or equivalent):
 ```
-{IP number} sabnzbd.media couchpotato.media sonarr.media http://plex.media
+{IP number} sabnzbd.media couchpotato.media sonarr.media plex.media
 ```
 _Pros might choose to install a DNS service or just us a public 😱 IP configured with a proper domain name. For that, the nginx configs in `./config/nginx/nginx/site-confs` need changing. Also, SSL is a good idea in that scenaro... I won't even go there._
 
