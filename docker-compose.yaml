@@ -56,7 +56,7 @@ services:
     volumes:
       - ./config/plex:/config
       - ./storage/tv:/data/tvshows
-      - ./storage/movies:/data/tvshows
+      - ./storage/movies:/data/movies
       - ./storage/plex_transcode:/transcode
     ports:
       - 32400:32400
