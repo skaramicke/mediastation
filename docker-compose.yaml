@@ -17,6 +17,8 @@ services:
     volumes:
       - ./config/sabnzbd:/config
       - ./storage/downloads:/downloads
+      - ./storage/downloads-tv:/downloads-tv
+      - ./storage/downloads-movies:/downloads-movies
       - ./storage/incomplete-downloads:/incomplete-downloads
     ports:
       - 8080:8080
@@ -29,7 +31,7 @@ services:
     image: linuxserver/couchpotato
     volumes:
       - ./config/couchpotato:/config
-      - ./storage/downloads:/downloads
+      - ./storage/downloads-movies:/downloads-movies
       - ./storage/movies:/movies
     ports:
       - 5050:5050
@@ -43,7 +45,7 @@ services:
     volumes:
       - ./config/sonarr:/config
       - ./storage/tv:/tv
-      - ./storage/downloads/:/downloads
+      - ./storage/downloads-tv:/downloads-tv
     ports:
       - 8989:8989
     environment:
@@ -63,10 +65,10 @@ services:
       - 32400:32400/udp
       - 32469:32469
       - 32469:32469/udp
-      - 5353:5353/udp
       - 1900:1900/udp
     environment:
       - PGID=1000
       - PUID=1000
       - TZ:Europe/Stockholm
+      - VERSION=latest
       
